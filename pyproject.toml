@@ -1,0 +1,17 @@
+[project]
+name = "video_steam_optimization"
+version = "1.0.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "feng", email = "zoollcar@qq.com"},
+]
+dependencies = [
+    "FreeSimpleGui>=5.1.1",
+]
+requires-python = "==3.10.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
