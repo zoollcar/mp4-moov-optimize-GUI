@@ -7,11 +7,13 @@ import checkIfNeedOptimization
 
 # Define the window's contents
 layout = [
-    [sg.Text("视频流媒体优化工具")],
+    [sg.Text("MP4视频优化工具")],
     [
         sg.Text("选择需要优化的视频文件：", size=(15, 1)),
         sg.InputText(key="-file1-", change_submits=True),
-        sg.FileBrowse(button_text="选择", target="-file1-"),
+        sg.FileBrowse(
+            button_text="选择", target="-file1-", file_types=(("mp4视频文件", ".mp4"))
+        ),
     ],
     [
         sg.Text("视频保存到：", size=(15, 1)),
@@ -44,6 +46,7 @@ def get_total_duration(input_file):
         stderr=subprocess.PIPE,
     )
     return float(result.stdout)
+
 
 def runCommand(cmd, window=None):
     total_duration = get_total_duration(values["-file1-"])
@@ -84,11 +87,10 @@ def runCommand(cmd, window=None):
                 remaining_minutes, remaining_seconds = divmod(remainder, 60)
                 formatted_remaining_time = f"{int(remaining_hours)}:{int(remaining_minutes):02}:{int(remaining_seconds):02}"
 
-                print(
-                    f"进度: {percent:.2f}% | 剩余时间: {formatted_remaining_time}"
-                )
+                print(f"进度: {percent:.2f}% | 剩余时间: {formatted_remaining_time}")
         window.refresh() if window else None
     sg.popup("已完成", button_type=5)  # 5: POPUP_BUTTONS_NO_BUTTONS
+
 
 # Display and interact with the Window using an Event Loop
 while True:
@@ -96,12 +98,12 @@ while True:
     # See if user wants to quit or window was closed
     if event == sg.WINDOW_CLOSED or event == "退出":
         break
-    if event == '-file1-':
-        if os.path.exists(values['-file1-']):
+    if event == "-file1-":
+        if os.path.exists(values["-file1-"]):
             if checkIfNeedOptimization.checkIfNeedOptimization(values["-file1-"]):
-                print('选择的文件*不需要优化*')
+                print("选择的文件*不需要优化*")
             else:
-                print('选择的文件*需要优化*')
+                print("选择的文件*需要优化*")
     if event == "开始转换":
         print("开始转换", values)
         cmd = [
