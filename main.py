@@ -21,7 +21,7 @@ layout = [
         ),
     ],
     [sg.Button("开始转换"), sg.Button("退出")],
-    # [sg.Output(size=(110, 30), background_color="black", text_color="white")],
+    [sg.Output(size=(110, 30), background_color="black", text_color="white")],
 ]
 
 # Create the window
