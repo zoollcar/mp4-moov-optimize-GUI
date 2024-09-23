@@ -1,15 +1,16 @@
 import FreeSimpleGUI as sg
 import subprocess
-import sys
+import os
 import re
 import time
+import checkIfNeedOptimization
 
 # Define the window's contents
 layout = [
-    [sg.Text("中医堂视频流媒体优化工具")],
+    [sg.Text("视频流媒体优化工具")],
     [
         sg.Text("选择需要优化的视频文件：", size=(15, 1)),
-        sg.InputText(key="-file1-"),
+        sg.InputText(key="-file1-", change_submits=True),
         sg.FileBrowse(button_text="选择", target="-file1-"),
     ],
     [
@@ -20,7 +21,7 @@ layout = [
         ),
     ],
     [sg.Button("开始转换"), sg.Button("退出")],
-    [sg.Output(size=(110, 30), background_color="black", text_color="white")],
+    # [sg.Output(size=(110, 30), background_color="black", text_color="white")],
 ]
 
 # Create the window
@@ -43,7 +44,6 @@ def get_total_duration(input_file):
         stderr=subprocess.PIPE,
     )
     return float(result.stdout)
-
 
 def runCommand(cmd, window=None):
     total_duration = get_total_duration(values["-file1-"])
@@ -90,13 +90,18 @@ def runCommand(cmd, window=None):
         window.refresh() if window else None
     sg.popup("已完成", button_type=5)  # 5: POPUP_BUTTONS_NO_BUTTONS
 
-
 # Display and interact with the Window using an Event Loop
 while True:
     event, values = window.read()
     # See if user wants to quit or window was closed
     if event == sg.WINDOW_CLOSED or event == "退出":
         break
+    if event == '-file1-':
+        if os.path.exists(values['-file1-']):
+            if checkIfNeedOptimization.checkIfNeedOptimization(values["-file1-"]):
+                print('选择的文件*不需要优化*')
+            else:
+                print('选择的文件*需要优化*')
     if event == "开始转换":
         print("开始转换", values)
         cmd = [
