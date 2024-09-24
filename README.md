@@ -1,6 +1,6 @@
 # mp4-moov-optimize-GUI
 
-make mp4 video play fast
+make mp4 video play faster
 (Move `moov` atom before `mdat`)
 
 # how to develop
