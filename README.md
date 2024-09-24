@@ -1,3 +1,5 @@
+english | [中文](./README_zh.md)
+
 # mp4-moov-optimize-GUI
 
 make mp4 video play faster
