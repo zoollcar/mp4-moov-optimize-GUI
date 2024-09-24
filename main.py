@@ -111,6 +111,7 @@ while True:
         print(texts[lang]["start_optimize"], values)
         cmd = [
             "ffmpeg",
+            "-y",
             "-i",
             values["-file1-"],
             "-movflags",
