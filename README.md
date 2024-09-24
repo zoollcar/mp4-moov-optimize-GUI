@@ -3,6 +3,8 @@
 make mp4 video play faster
 (Move `moov` atom before `mdat`)
 
+<img width="616" alt="Snipaste_2024-09-24_08-39-36" src="https://github.com/user-attachments/assets/661903f2-9414-4591-b860-f904ad68e6be">
+
 # how to develop
 
 1. install [pdm](https://github.com/pdm-project/pdm)
