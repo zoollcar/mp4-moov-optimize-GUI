@@ -7,6 +7,13 @@ make mp4 video play faster
 
 <img width="616" alt="Snipaste_2024-09-24_08-39-36" src="https://github.com/user-attachments/assets/661903f2-9414-4591-b860-f904ad68e6be">
 
+# function
+make a commend:
+```bash
+ffmpeg -y -i input_video.mp4 -movflags faststart -progress pipe:1 -nostats output_video.mp4
+```
+and run
+
 # how to develop
 
 1. install [pdm](https://github.com/pdm-project/pdm)
