@@ -2,17 +2,17 @@ english | [中文](./README_zh.md)
 
 # mp4-moov-optimize-GUI
 
-make mp4 video play faster
+Make mp4 video play faster
 (Move `moov` atom before `mdat`)
 
 <img width="616" alt="Snipaste_2024-09-24_08-39-36" src="https://github.com/user-attachments/assets/661903f2-9414-4591-b860-f904ad68e6be">
 
 # function
-make a commend:
+It's just makes a command:
 ```bash
 ffmpeg -y -i input_video.mp4 -movflags faststart -progress pipe:1 -nostats output_video.mp4
 ```
-and run
+and run it.
 
 # how to develop
 
