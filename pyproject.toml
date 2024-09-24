@@ -1,7 +1,7 @@
 [project]
-name = "video_steam_optimization"
+name = "mp4-moov-optimize-GUI"
 version = "1.0.0"
-description = "Default template for PDM package"
+description = "make mp4 video play fast(Move `moov` atom before `mdat`)"
 authors = [
     {name = "feng", email = "zoollcar@qq.com"},
 ]
