@@ -1,7 +1,7 @@
 import locale
 
 texts = {
-    "chinese": {
+    "Chinese": {
         "title": "MP4视频优化工具",
         "select_file": "选择需要优化的视频文件：",
         "select": "选择",
@@ -13,7 +13,7 @@ texts = {
         "no_optimization": "选择的文件*不需要优化*",
         "needs_optimization": "选择的文件*需要优化*",
     },
-    "english": {
+    "English": {
         "title": "MP4 Video Optimization Tool",
         "select": "select",
         "select_file": "Select video file to optimize: ",
@@ -29,11 +29,12 @@ texts = {
 
 def getLang():
     # Load language based on system locale
-    lang_code, _ = locale.getlocale()
+    locale.setlocale(locale.LC_ALL, "")
+    lang_code, _ = locale.getlocale(locale.LC_ALL)
     print(lang_code)
     if lang_code == None:
-        return "english"
-    elif lang_code.find("chinese") != -1:
-        return "chinese"
+        return "English"
+    elif lang_code.find("Chinese") != -1:
+        return "Chinese"
     else:
-        return "english"
+        return "English"

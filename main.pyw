@@ -37,7 +37,6 @@ layout = [
 # Create the window
 window = sg.Window(texts[lang]["title"], layout)
 
-
 def get_total_duration(input_file):
     result = subprocess.run(
         [
